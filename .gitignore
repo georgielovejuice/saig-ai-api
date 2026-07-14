@@ -1,0 +1,46 @@
+# Data — NEVER commit. Raw datasets are ~4.8 GB and live at ../data/
+data/
+*.csv
+*.parquet
+*.duckdb
+*.duckdb.wal
+
+# MLflow local tracking store
+mlruns/
+mlartifacts/
+
+# Models
+models/
+*.pkl
+*.joblib
+*.ubj
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ruff_cache/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Local editor/agent context
+CLAUDE.md
+.claude/
+
+
+
+# Written by hand later; keep out of git until then
+README.md
+docs/decisions.md

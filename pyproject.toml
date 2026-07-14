@@ -1,0 +1,38 @@
+[project]
+name = "saig-ai-api"
+version = "0.1.0"
+description = "RoadRisk TH — accident risk prediction for Thailand (training pipeline + FastAPI serving)"
+readme = "README.md"
+# Upper bound is deliberate. On Python 3.14, shap pulls llvmlite, which has no 3.14
+# wheel and fails to build from source. Do not widen without re-running the import check.
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "duckdb>=1.5.4",
+    "fastapi>=0.139.0",
+    "h3>=4.5.0",
+    "matplotlib>=3.11.0",
+    "mlflow>=3.14.0",
+    "numpy>=2.3.5",
+    "pandas>=2.3.3",
+    "polars>=1.42.1",
+    "pydantic-settings>=2.14.2",
+    "python-dotenv>=1.2.2",
+    "scikit-learn>=1.9.0",
+    "shap>=0.52.0",
+    "uvicorn[standard]>=0.51.0",
+    "xgboost>=3.3.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "jupyter>=1.1.1",
+    "ruff>=0.15.21",
+]

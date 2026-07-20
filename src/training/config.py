@@ -48,10 +48,11 @@ TEST_YEARS = (2024, 2025)  # inclusive
 # Thailand bounding box. Dataset 1 has 10 rows with coordinates outside it (drop or fix).
 TH_BBOX = {"min_lat": 5.6, "max_lat": 20.5, "min_lon": 97.3, "max_lon": 105.7}
 
-# H3 resolution is not decided yet. Compare 5/6/7/8 empirically (cells over Thailand,
-# accidents per cell, share of empty cells) before picking. Left as None deliberately so
-# nothing silently freezes an unjustified default.
-H3_RESOLUTION: int | None = None
+# res 6 - ~3.7km edge, 6412 occupied cells, median 5 accidents per cell over the
+# train period. res 5 is denser per cell but the hexes get big enough (~10km) that a
+# hotspot stops meaning anything to a driver. res 7+ is too sparse, 66% of cells
+# under 5 accidents.
+H3_RESOLUTION = 6
 H3_CANDIDATE_RESOLUTIONS = (5, 6, 7, 8)
 
 # Dataset 5 coverage window. Priors built from these years are static: they describe

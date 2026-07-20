@@ -43,4 +43,6 @@ CLAUDE.md
 
 # Written by hand later; keep out of git until then
 README.md
-docs/decisions.md
+
+# docs stay local for now, revisit what goes public later
+docs/

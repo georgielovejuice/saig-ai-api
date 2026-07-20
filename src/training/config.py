@@ -21,12 +21,12 @@ WORKSPACE_ROOT = REPO_ROOT.parent
 DATA_ROOT = Path(os.getenv("ROADRISK_DATA_ROOT", WORKSPACE_ROOT / "data"))
 
 # Dataset 1 — nationwide accidents, 2019-2025, 151,778 rows. PRIMARY training data.
-ACCIDENTS_CSV = (
-    DATA_ROOT / "1_ข้อมูลอุบัติเหตุทางรถยนต์ในประเทศไทย" / "thai_accidental_dataset.csv"
-)
+ACCIDENTS_CSV = DATA_ROOT / "1_ข้อมูลอุบัติเหตุทางรถยนต์ในประเทศไทย" / "thai_accidental_dataset.csv"
 
-# Dataset 5 — iTIC traffic events. Bangkok + vicinity ONLY, 2021-2023 ONLY.
+# Dataset 5 — iTIC traffic events, 2021-2023. Bangkok-dominant (87% of events) but
+# nationwide in extent, so coverage is a density measure, not a Bangkok boolean.
 # 6,148,474 rows / ~4.8 GB across three files. DuckDB only — never pd.read_csv these.
+# eid is NOT unique: those rows are only 78,690 events. Always count(DISTINCT eid).
 ITIC_DIR = DATA_ROOT / "5_ข้อมูลเหตุการณ์ทางถนนในประเทศไทย"
 ITIC_GLOB = str(ITIC_DIR / "traffic_event_*.csv")
 
